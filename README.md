@@ -92,3 +92,25 @@ The E-Voting System is designed to facilitate online elections by allowing users
 | Method       | Endpoint        | Description                                  |
 | ------------ |:----------------|:---------------------------------------------|
 | POST         | /results/winner | Retrieves the winning choice for an election |
+
+
+
+### 📄 Example Request: Get Users (Paginated)
+
+Fetch a paginated list of users from the system.
+
+### 🔹 HTTP Request
+
+GET /get/users?page=0&size=5
+
+### 🔹 Description
+
+Returns the first 5 users.  
+Pagination starts from page index `0`.
+
+### 🔹 Query Parameters
+
+| Parameter | Type   | Description                          |
+| --------- |:-------|:-------------------------------------|
+| `page`    | int    | Page number (e.g., `0` = first page) |
+| `size`    | int    | Number of users per page             |
