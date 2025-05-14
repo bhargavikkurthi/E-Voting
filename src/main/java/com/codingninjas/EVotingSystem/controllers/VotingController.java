@@ -20,7 +20,7 @@ public class VotingController {
 
 
 	//	Election Endpoints
-	@PostMapping("/election")
+	@PostMapping("/elections")
 	public void addElection(@RequestBody Election election) {
 		votingService.addElection(election);
 	}
@@ -58,7 +58,7 @@ public class VotingController {
 		return votingService.getAllUsers();
 	}
 	
-	@PostMapping("/user")
+	@PostMapping("/users")
 	public void addUser(@RequestBody User user) {
 		votingService.addUser(user);
 	}
@@ -70,7 +70,7 @@ public class VotingController {
 		return votingService.getAllVotes();
 	}
 
-	@PostMapping("/vote")
+	@PostMapping("/votes")
 	public void addVote(@RequestBody Vote vote) {
 		User user =
 				votingService.findUserByName(vote.getUser().getName());
@@ -100,7 +100,7 @@ public class VotingController {
 
 
 //	Results Endpoints
-	@PostMapping("results/winner")
+	@PostMapping("/results/winner")
 	public ElectionChoice getWinnerOfElection(@RequestBody Election election) {
 		Election actualElection =
 				votingService.findElectionByName(election.getName());
