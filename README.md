@@ -99,16 +99,16 @@ The E-Voting System is designed to facilitate online elections by allowing users
 
 Fetch a paginated list of users from the system.
 
-### 🔹 HTTP Request
+🔹 HTTP Request
 
 GET /get/users?page=0&size=5
 
-### 🔹 Description
+🔹 Description
 
 Returns the first 5 users.  
 Pagination starts from page index `0`.
 
-### 🔹 Query Parameters
+🔹 Query Parameters
 
 | Parameter | Type   | Description                          |
 | --------- |:-------|:-------------------------------------|
