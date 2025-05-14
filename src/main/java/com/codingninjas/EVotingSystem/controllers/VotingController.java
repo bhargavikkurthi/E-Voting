@@ -2,10 +2,9 @@ package com.codingninjas.EVotingSystem.controllers;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.*;
 import com.codingninjas.EVotingSystem.entities.Election;
 import com.codingninjas.EVotingSystem.entities.ElectionChoice;
 import com.codingninjas.EVotingSystem.entities.User;
@@ -105,6 +104,37 @@ public class VotingController {
 		Election actualElection =
 				votingService.findElectionByName(election.getName());
 		return votingService.findElectionChoiceWithMaxVotes(actualElection);
+	}
+
+
+
+
+	@GetMapping("/get/users")
+	public Page<User> getAllUsers(@RequestParam(defaultValue = "0") int page,
+								  @RequestParam(defaultValue = "10") int size) {
+		Pageable pageable = org.springframework.data.domain.PageRequest.of(page, size);
+		return votingService.getAllUsers(pageable);
+	}
+
+	@GetMapping("/get/votes")
+	public Page<Vote> getAllVotes(@RequestParam(defaultValue = "0") int page,
+								  @RequestParam(defaultValue = "10") int size) {
+		Pageable pageable = org.springframework.data.domain.PageRequest.of(page, size);
+		return votingService.getAllVotes(pageable);
+	}
+
+	@GetMapping("/get/elections")
+	public Page<Election> getAllElections(@RequestParam(defaultValue = "0") int page,
+										  @RequestParam(defaultValue = "10") int size) {
+		Pageable pageable = org.springframework.data.domain.PageRequest.of(page, size);
+		return votingService.getAllElections(pageable);
+	}
+
+	@GetMapping("/get/electionChoices")
+	public Page<ElectionChoice> getAllElectionChoices(@RequestParam(defaultValue = "0") int page,
+													  @RequestParam(defaultValue = "10") int size) {
+		Pageable pageable = org.springframework.data.domain.PageRequest.of(page, size);
+		return votingService.getAllElectionChoices(pageable);
 	}
 
 }

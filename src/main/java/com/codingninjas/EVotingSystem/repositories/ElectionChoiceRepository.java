@@ -2,6 +2,8 @@ package com.codingninjas.EVotingSystem.repositories;
 
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -27,4 +29,5 @@ public interface ElectionChoiceRepository extends JpaRepository<ElectionChoice,L
             """, nativeQuery = true)
 	ElectionChoice findElectionChoiceWithMaxVotes(@Param("electionId") Long electionId);
 
+	Page<ElectionChoice> findAll(Pageable pageable);
 }
